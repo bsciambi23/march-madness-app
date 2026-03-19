@@ -7,8 +7,9 @@ export default async function handler(req, res) {
     }
 
     const url =
-      `https://api.the-odds-api.com/v4/sports/basketball_ncaab/odds` +
-      `?regions=us&markets=h2h,spreads,totals&oddsFormat=american&apiKey=${apiKey}`;
+      "https://api.the-odds-api.com/v4/sports/basketball_ncaab/odds" +
+      "?regions=us&markets=h2h,spreads,totals&oddsFormat=american&apiKey=" +
+      apiKey;
 
     const response = await fetch(url);
     const data = await response.json();
