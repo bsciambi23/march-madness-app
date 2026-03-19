@@ -164,10 +164,7 @@ export default function App() {
   const [useSampleData, setUseSampleData] = useState(true)
 
   async function loadOdds() {
-    if (!apiKey.trim()) {
-      setError('Paste your Odds API key first.')
-      return
-    }
+   
 
     setLoading(true)
     setError('')
@@ -227,7 +224,7 @@ export default function App() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      if (!useSampleData && apiKey.trim()) loadOdds()
+      if (!useSampleData) loadOdds()
     }, 60 * 60 * 1000)
     return () => clearInterval(timer)
   }, [useSampleData, apiKey])
