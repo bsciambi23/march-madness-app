@@ -154,7 +154,7 @@ function DetailModal({ game, onClose }) {
 }
 
 export default function App() {
-  const [apiKey, setApiKey] = useState('')
+  const [apiKey] = useState("");
   const [games, setGames] = useState(sampleGames)
   const [loading, setLoading] = useState(false)
   const [query, setQuery] = useState('')
@@ -173,7 +173,7 @@ export default function App() {
     setError('')
 
     try {
-      const url = `https://api.the-odds-api.com/v4/sports/basketball_ncaab/odds?regions=us&markets=h2h,spreads,totals&oddsFormat=american&apiKey=${apiKey}`
+      const url = "/api/odds";
       const res = await fetch(url)
       if (!res.ok) throw new Error(`Request failed: ${res.status}`)
       const data = await res.json()
@@ -247,7 +247,7 @@ export default function App() {
         </div>
 
         <div className="top-controls">
-          <input value={apiKey} onChange={(e) => setApiKey(e.target.value)} placeholder="Paste your Odds API key here" className="input" />
+        
           <button onClick={loadOdds} className="button" disabled={loading}>{loading ? 'Loading' : 'Load odds'}</button>
         </div>
       </div>
